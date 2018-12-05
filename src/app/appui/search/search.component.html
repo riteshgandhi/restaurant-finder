@@ -1,0 +1,22 @@
+<form>
+  <div style="text-align: center">
+    <div class="input-group">
+      <button class="btn btn-default" (click)="findCurrentAddress()" title="Find Current Location">
+        <i class="fa fa-map-marker"></i>
+      </button>
+      <input type="search" class="form-control" style="width:400px" placeholder="finding current location..." 
+        #placeAaddress required>
+      <div class="input-group-append">
+        <select [(ngModel)]="cuisines.defaultType.name" name="first" class="btn btn-outline-secondary dropdown-toggle">
+          <option *ngFor="let option of cuisines.cuisineTypes">
+            {{option.name}}
+          </option>
+        </select>  
+      </div>    
+      <button class="btn" (click)="searchPlaces()" title="Search Restaurants" style="background-color: lightgray; color: white">
+          <i class="fa fa-search"></i>
+      </button>
+    </div>
+  </div>
+  </form>
+  

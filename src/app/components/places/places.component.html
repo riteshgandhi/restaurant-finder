@@ -1,0 +1,17 @@
+<div id='divInitial'>
+    Initializing map. Please wait...
+</div>
+<div class="card-deck" id='divMap' style="display: none">
+    <div class="card" style="width:20%">
+        <div class="card-body">
+            <form>
+                <div #gmap class="z-depth-1" class="z-depth-1-half map-container" style="height: 400px;"></div>
+            </form>
+        </div>
+    </div>
+    <div class="card" style="width:80%; display: none" id="place-detail">
+        <div class="card-body">
+            <app-place-detail [currentPlace]="selectedPlace"></app-place-detail>
+        </div>
+    </div>
+</div>

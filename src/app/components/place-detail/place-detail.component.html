@@ -1,0 +1,65 @@
+<style>
+  .checked {
+      color: orange;
+  }
+</style>
+
+<div class="card text-center" style="height:100%">
+  <div class="card-header">
+    <ul class="nav nav-pills card-header-pills">
+      <li class="nav-item">
+        <a class="nav-link" href="javascript:void(0);" 
+          id="lnkInfo" (click)="hideDirectionDiv($event)">Info</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="javascript:void(0);" id="lnkDirections" 
+          (click)="hideInfoDiv($event)">Directions</a>
+      </li>
+    </ul>
+  </div>
+
+  <div class="card-body" id="divMain">
+    <div *ngIf="currentPlace">
+      <div>
+          <div style="display:inline-block">
+              <img src={{currentPlace.photoUrl}} style="width:100px; height:80px">
+          </div>
+          <div style="display:inline-block">
+              <h1>{{currentPlace.name}}</h1>
+          </div>
+          <div style="width:20px;height:auto;display: inline-block"></div>
+          <div style="display:inline-block">
+            {{currentPlace.address}}
+            <br>
+            <span *ngFor="let item of generateRating();" [ngClass]=item></span>
+            {{currentPlace.open_now}}
+          </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card-body" id="divDirections" style="display: none">
+    <div *ngIf="currentPlace">
+      <div>
+        <div style="width:100%; overflow-y: scroll; height: 290px; padding: 1rem; margin: auto; padding-top: 1%">
+          <table class="table table-striped">
+            <tr *ngFor="let item of directions; let step = index;">
+              <td>
+                <a href="{{item.mapUrl}}" target="_blank"><img src="{{item.iconUrl}}"></a>
+              </td>
+              <td>
+                {{step +1}}
+              </td>
+              <td>
+                <a href="{{item.mapUrl}}" target="_blank">{{item.narrative}}</a>
+              </td>
+              <td>
+                {{item.distance}}m
+              </td>
+            </tr>
+          </table>
+        </div>        
+      </div>
+    </div>
+  </div>
+</div>
